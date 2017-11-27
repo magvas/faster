@@ -3,28 +3,21 @@ function randomPosition(params) {
     var leftPos = button.style.left;
     var topPos = button.style.top;
 
-    var newLeftPos;
-    
-    if(leftPos === ""){
-       newLeftPos = (leftPos* 1)+10;
-    }
-    else{
-        newLeftPos = ((leftPos.slice(0,leftPos.length - 2)) * 1) + 10;
-    }
+    var headerHeight = document.getElementById("header").clientHeight;
+    var footerHeight = document.getElementById("footer").clientHeight;
+
+    var newLeftPos = getRndInteger(0,screen.width - button.clientWidth);
 
     document.getElementById("tapMe").style.left = newLeftPos + "px";
 
-    var newTopPos;
-
-    if(topPos === ""){
-        newTopPos = (topPos* 1)+10;
-     }
-     else{
-        newTopPos = ((topPos.slice(0,topPos.length - 2)) * 1) + 10;
-     }
+    var newTopPos = getRndInteger(0,screen.height - headerHeight - footerHeight - button.clientHeight);
  
      document.getElementById("tapMe").style.top = newTopPos + "px";
  
 
     document.getElementById("status").innerText = "Horizontal: " + newLeftPos + " | Vertical: " + newTopPos;
+}
+
+function getRndInteger(min, max) {
+    return Math.floor(Math.random() * (max - min) ) + min;
 }
