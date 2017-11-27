@@ -1,4 +1,4 @@
-function randomPosition(params) {
+function setRandomPosition(params) {
     var button = document.getElementById("tapMe");
     var leftPos = button.style.left;
     var topPos = button.style.top;
