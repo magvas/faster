@@ -6,11 +6,11 @@ function setRandomPosition(params) {
     var headerHeight = document.getElementById("header").clientHeight;
     var footerHeight = document.getElementById("footer").clientHeight;
 
-    var newLeftPos = getRndInteger(0,screen.width - button.clientWidth);
+    var newLeftPos = getRndInteger(0,document.documentElement.clientWidth - button.clientWidth);
 
     document.getElementById("tapMe").style.left = newLeftPos + "px";
 
-    var newTopPos = getRndInteger(0,screen.height - headerHeight - footerHeight - button.clientHeight);
+    var newTopPos = getRndInteger(0,window.innerHeight - headerHeight - footerHeight - button.clientHeight);
  
      document.getElementById("tapMe").style.top = newTopPos + "px";
  
