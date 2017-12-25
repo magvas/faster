@@ -6,21 +6,33 @@
         <meta name="viewport" content="width=device-width,height=device-height, initial-scale=1">
         <link href="css/w3.css" rel="stylesheet">
         <link href="css/font-awesome-4.6.3/css/font-awesome.min.css" rel="stylesheet">
-        <link href="css/app.css" rel="stylesheet">
-
-        <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+        <link href="css/app.css" rel="stylesheet">        
         <script src="app.js"></script>
     </head>
-    <body class="w3-black">
+    <body class="w3-black" onload="init()">
         <div id="header" class="w3-container w3-black">
-            <i class="fa fa-bars w3-xxlarge w3-right"></i>
+            <div id="menu" class="fa fa-bars w3-xxlarge w3-right"></div>
+            <div id="countdown" class="w3-left">0</div>
+            <div id="hitcount" class="w3-center">0</div>                        
         </div>
         <div id="content" class="w3-container w3-black" height="100%">
-            <button id="tapMe" class="w3-button w3-xlarge w3-circle w3-blue" onclick="setRandomPosition()">:)</button>
+            <button id="tapMe" class="w3-button w3-xlarge w3-circle w3-blue" onclick="hitSuccess()">:)</button>
             <p height="100%"></p>
         </div>
         <div id="footer" class="w3-container w3-bottom w3-black">
             <div id="status">Status</div>
+        </div>
+        <div id="finaldialog" class="w3-modal">
+            <div class="w3-modal-content">
+                <div class="w3-container">
+                    <!-- <span onclick="afterFinalDialog()" class="w3-button w3-display-topright">&times;</span> -->
+                    <p id="score" class="w3-text-blue"></p>                    
+                </div>
+                <div class="w3-container w3-light-grey w3-padding">
+                        <button class="w3-button w3-right w3-white w3-border" 
+                        onclick="afterFinalDialog()">Close</button>
+                       </div>
+            </div>
         </div>
     </body>
 </html>
