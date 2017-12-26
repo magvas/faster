@@ -5,8 +5,12 @@ var timerStarted;
 var countdown;
 var finaldialog;
 var scoreelement;
+var settingsDialog;
+var countdowninitvalue;
+var countdowninit;
+var timer;
 const HITCOUNTINITVALUE = 0;
-const COUNTDOWNINITVALUE = 10;
+const COUNTDOWNDEFAULTVALUE = 60;
 const COUNTDOWNFINALVALUE = 0;
 
 function init(){
@@ -14,9 +18,16 @@ function init(){
     countdownelement = document.getElementById("countdown");
     finaldialog = document.getElementById("finaldialog");
     scoreelement = document.getElementById("score");
+    settingsDialog = document.getElementById("settingsdialog");
+    countdowninit = document.getElementById("countdowninit");
+
+    if (countdowninitvalue == undefined) {
+        countdowninitvalue = COUNTDOWNDEFAULTVALUE;    
+    }
+    
     resetHitCount();  
     resetCountdown();
-    setRandomPosition();
+    setRandomPosition();    
     timerStarted = false;      
 }
 
@@ -26,7 +37,7 @@ function resetHitCount(){
 }
 
 function resetCountdown() {
-    countdown = COUNTDOWNINITVALUE;
+    countdown = countdowninitvalue;
     setCountdownElement(countdown);
 }
 
@@ -42,20 +53,30 @@ function hitSuccess(){
 function runTimer() {    
     timerStarted = true;
     if (countdown !== COUNTDOWNFINALVALUE) {
-        setTimeout(() => {
+        timer = setTimeout(() => {
             countdown--;
             setCountdownElement(countdown);
             runTimer();
         }, 1000);    
     }
-    else{
-        scoreelement.innerText = hitcount + " hits in " + COUNTDOWNINITVALUE + " seconds!";
-        finaldialog.style.display = "block";
+    else{    
+        showFinalDialog(hitcount);
     }        
 }
 
-function afterFinalDialog() {
-    finaldialog.style.display='none'
+function showFinalDialog(count) {
+    scoreelement.innerText = count + " hits in " + countdowninitvalue + " seconds!";
+    finaldialog.style.display = "block";
+}
+
+function closeFinalDialogAndInit() {
+    finaldialog.style.display = "none";
+    init();
+}
+
+function closeSettingsDialog() {
+    settingsDialog.style.display = "none";
+    countdowninitvalue = countdowninit.value;
     init();
 }
 
@@ -65,6 +86,12 @@ function setHitCountElement(counter){
 
 function setCountdownElement(counter){
     countdownelement.innerText = counter;
+}
+
+function showSettingsDialog(){
+    clearTimeout(timer);
+    countdowninit.value = countdowninitvalue;
+    settingsDialog.style.display = "block";
 }
 
 function setRandomPosition() {

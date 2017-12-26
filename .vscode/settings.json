@@ -1,13 +1,13 @@
 {
     "deploy": {
-    "targets": [            
-            {
-                "type": "local",
-                "name": "Homeserver web folder",
-                "description": "A SMB shared network folder",
+        "targets": [            
+                {
+                    "type": "local",
+                    "name": "Homeserver web folder",
+                    "description": "A SMB shared network folder",
 
-                "dir": "\\\\homeserver\\web\\faster"
-            }
-              ]
+                    "dir": "\\\\homeserver\\web\\faster"
+                }
+                ]
     }
 }
