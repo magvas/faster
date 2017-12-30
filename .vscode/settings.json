@@ -1,7 +1,21 @@
 {
     "deploy": {
+        "packages": [
+            {
+                "name": "faster",                
+                "exclude": [                    
+                    ".git/**",
+                    ".vscode/**"
+                ],
+                "button": {
+                    "text": "Deploy to homerser web folder",
+                    "tooltip": "Click here to deploy to the target...",
+                    "targets": [ "Homeserver web folder" ]
+                }
+            }
+        ],
         "targets": [            
-                {
+                {                    
                     "type": "local",
                     "name": "Homeserver web folder",
                     "description": "A SMB shared network folder",
